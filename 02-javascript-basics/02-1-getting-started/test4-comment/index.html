@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* CSS 주석은 오직 이런 모양! */
+       body {
+         text-align: center;
+       }
+       #title {
+         color: red;
+       }
+    </style>
+  </head>
+  <body>
+    <!-- HTML 주석은 항상 이런 모양! -->
+    <h1 id="title">javascript</h1>
+    <button onclick="myButtonClick()">click me</button>
+    <script>
+        // JS 주석이 한 줄 일 때, 이 모양
+        /* JS 주석이 여러 줄 일 때, 이 모양 */
+      const myButtonClick = () => {
+          let sum= 0;
+          for (i=1; i< 11; i++) {
+            sum += i;
+          }
+          console.log(sum);
+      }
+    </script>
+  </body>
+
+  <!-- ❓ 자바스크립트는 대문자와 소문자를 어떤식으로 구분해야 할까? (하나의 굳어진 관습, 명심하자)  -->
+  <!-- > 변수와 함수의 경우, 소문자로 시작. 
+       > 여러 단어의 경우, camelCase
+       > 클래스의 경우, PascalCase -->
+</html>

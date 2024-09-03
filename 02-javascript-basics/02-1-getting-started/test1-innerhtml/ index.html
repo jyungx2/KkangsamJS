@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {text-align: center;}
+      #title {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Hello Javascript</h1>
+    <button onClick="myButtonClick()">click me</button>
+
+    <!--📍 html parser에 의해 parsing되지 않고, 
+    JS engine에 의해 처리되게끔 <script> 노드로 감싸줌! 
+    이때, 자바스크립트를 html 문서 내에 추가하려면 스크립트 태그를 써야 하는 건 맞지만, 
+    오로지 자바스크립트 코드만을 위한 태그는 아니다.  -->
+
+    <!-- 원론적으로 <script> 태그는 Html parser가 <script>로 
+    묶여 있는 코드를 parsing하지 못하게 만드는 코드이다.
+    👉 파싱하지 못하고 자바스크립트 엔진을 불러올 수 있는 이유는? 아래와 같이,
+    <script type="application/javascript"> 
+    👉 type이 이런식으로 지정이 돼있으면 JS엔진을 구동시킬 수 있다.
+    👉 워낙 많은 개발자들이 자바스크립트를 쓰기 떄문에, Type attribute를 쓰지 않아도 자바스크립트 엔진이 구동되게끔 디폴트값이 설정돼 있음.
+
+    🛎️ If, type="aaa"이렇게 임의의 텍스트를 넣는다면 html parser는 그냥 무시해버리고 넘어감!
+    >> 이런 식으로 타입을 왜 쓰냐? 
+    : 개발자가 나중에 뽑아내야 하는 자바스크립트에서 써야하는 템플릿 문자열을 여기다 담아놓고, 나중에 여기다가 몰래 담아놓은 문자열을 뽑아서 쓸거야 할 때 가끔 쓰임(흔하지 X) -->
+    <script>
+      const myButtonClick = () =>  {
+        let title = document.getElementById('title');
+        if (title.style.backgroundColor === 'yellow') {
+            title.style.backgroundColor = 'pink';
+        } else {
+            title.style.backgroundColor = 'yellow';
+        }
+      }
+    </script>
+  </body>
+</html>

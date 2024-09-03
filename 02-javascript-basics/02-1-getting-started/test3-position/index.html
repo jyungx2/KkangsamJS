@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- TEST3 -->
+    <script>
+       // 🌟 window = browser
+       // ☝️ load: html parser에 의해 Parsing이 완료된 시점에 발생하는 이벤트
+       // ✌️ Callback function: 이벤트가 발생되는 시점에 실행되는 함수
+       /* => 이 두 가지를 사용하면, 아무리 node가 메모리 상에 로딩되기 전에 html parser에 의해 읽힌다 해도, "html parser가 'load' 이벤트가 발생할 때만 콜해주면 되겠네?" 정도만 인식하기 때문에 오류가 발생하지 않고 정상적으로 작동한다! 즉, 실제 이 부분이 실행되는 시점은 로딩이 다 끝난 후에 작동되기 때문에 dom node를 건드리더라도 문제가 없다. */
+      window.addEventListener('load', function (e) {
+        let selectNode = document.getElementById('a1')
+        selectNode.style.backgroundColor = 'red';
+      } )
+    </script>
+  </head>
+  <body>
+    <!-- 🚨 자바스크립트 코드 위치가 문제가 될 수 있다. -->
+    <!-- html 문서의 태그와 관련이 없다면 자바스크립트 코드에서 html문서의 dom node를 이용하지 않는다면, 어느 위치에 작성되어 있든 상관없지만 (보통 이런 경우, 화면에 나오는 부가정보들만을 포함하는 <head> 태그 사이에 넣어준다), Dom node를 이용한다면 이용하는 태그가 html parser에 의해 메모리에 로딩된(올라온) 이후에 즉, 태그가 dom node 객체로 만들어진 이후에 해당 자바스크립트 코드가 실행되게 해주어야 에러가 발생하지 않는다. -->
+    <!-- 🌟 아니면, 자바스크립트 코드가 dom node를 사용한다 하더라도, <head>에 <script> 태그를 작성해도 되는 방법이 하나 있다. => <head>태그로 이동  -->
+
+    <!-- TEST1 -->
+    <!-- <script>
+      let selectNode = document.getElementById('a1')
+      selectNode.style.backgroundColor = 'red';
+    </script> -->
+    <h1 id="a1">One</h1>
+    <h1 id="a2">Two</h1>
+    <!-- TEST2 -->
+    <!-- <script>
+      let selectNode = document.getElementById('a1')
+      selectNode.style.backgroundColor = 'red';
+    </script> -->
+  </body>
+</html>
