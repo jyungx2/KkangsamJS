@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        // 📌 load -> laod로 오타냈을 때, console상 에러 발생 X
+        // 따라서 우리가 직접 컨솔로그 코드를 심어주어 직접 찾아내야 한다.
+        // => 의심갈만한 곳에 군데군데 아래처럼 컨솔로그 함수를 불러온 후,
+        // 출력되지 않는 곳에 가서 디버깅하자..
+        console.log(11);
+      window.addEventListener('load', function (e) {
+        console.log(22);
+        let selectNode = document.getElementById('a1')
+        selectNode.style.backgroundColor = 'red';
+
+
+        let url ="http://openapi.seoul.go.kr:8088/aa/794750456f6a656c36375057595344/json/culturalSpaceInfo/1/5/"
+        let xhr = new XMLHttpRequest()
+        xhr.open('get', url, true) // 서버 요청
+        xhr.onload = function () {
+            // 서버에서 응답이 오면...
+            alert('서버 연동이 완료되었습니다.')
+        }
+        xhr.send() // 서버 요청
+        // type: xhr (JS가 ajax를 통해서 서버 연동을 했다는 뜻.)
+      })
+    </script>
+  </head>
+
+  <body>
+    <h1 id="a1">One</h1>
+    <h1 id="a2">Two</h1>
+  </body>
+</html>
