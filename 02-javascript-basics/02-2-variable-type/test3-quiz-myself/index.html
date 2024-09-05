@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+          font-family: Arial, Helvetica, sans-serif;
+          font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      let name = "이지영";
+
+      let introduce =
+        "강아지와 음악, 커피 맛집 탐방을 좋아합니다. 체력관리를 위해 운동도 열심히 하려 노력중입니다.";
+
+      let goal =
+        "11기에 참여하는 모든 동료들과 끝까지 함께 노력하여 비전공자로서 느꼈던 개발 공부의 벽을 깨고, 당당히 주니어 개발자로 성장하고 싶습니다.";
+
+      let message =
+        "앞으로 6개월 동안에는 그 누구보다 가장 많이 보고, 의지하며 프론트엔드 개발자라는 하나의 목표로 달려가는 만큼, 서로에게 원동력이 되어 줄 수 있는 존재가 되었으면 합니다!";
+
+
+      document.write('<p> 이름 : ' + name + '</p>' + '<p> 자기소개 : ' + introduce + '</p>' + '<p> 프론트엔드 스쿨 11기를 통해 이루고 싶은 점 : ' + goal + '</p>' + '<p> 이름 : ' + message + '</p>');
+
+
+      const introMyself = function () {
+        document.write('<p> 이름 : ' + name + '</p>');
+        document.write('<p> 자기소개 : ' + introduce + '</p>');
+        document.write('<p> 프론트엔드 스쿨 11기를 통해 이루고 싶은 점 : ' + goal + '</p>');
+        document.write('<p> 이름 : ' + message + '</p>');
+      };
+      introMyself();
+    </script>
+  </body>
+</html>
