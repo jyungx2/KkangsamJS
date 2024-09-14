@@ -39,6 +39,7 @@ input1.addEventListener("focus", (e) => {
   e.target.style.background = "pink";
 });
 
+// ------------------ blur --------------------
 // 📌 focus를 잃어버리는 순간(다른 곳 클릭), 다시 원래색으로 돌아옴
 input1.addEventListener("blur", (e) => {
   e.target.style.background = "";
