@@ -18,6 +18,9 @@
   </head>
   <body>
     <h1>회원가입</h1>
+    <!-- type = "submit" 굳이 안써줘도 Form 요소는 자동으로 서버로 Submit됨!! 
+     => JS 코드에서 이벤트를 Submit으로 설정하고 form 노드 상에 불러오면 작동 OK
+     => 이때, Submit되면 무조건 새로고침되므로 e.preventDefault() 필수 작성!! -->
     <form id="form">
       <div>
         <label>이름 :</label>

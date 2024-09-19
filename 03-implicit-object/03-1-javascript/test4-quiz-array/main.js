@@ -40,20 +40,21 @@ addbtnNode.addEventListener("click", function () {
 
 // Map button
 mapbtnNode.addEventListener("click", function () {
-  resultArray = words.map((word) => word.toUpperCase());
+  let mappedArray = words.map((word) => word.toUpperCase());
 
-  printWord(resultArray);
+  printWord(mappedArray);
 });
 
 // Filter button
 filterbtnNode.addEventListener("click", function () {
-  let resultArray = words.filter((word, i) => word.length > 5);
+  let filteredArray = words.filter((word, i) => word.length > 5);
 
-  printWord(resultArray);
+  printWord(filteredArray);
 });
 
 // Sort button
 sortbtnNode.addEventListener("click", function () {
-  let resultArray = words.sort((a, b) => b - a);
-  printWord(resultArray);
+  let sortedArray = words.sort((a, b) => b - a);
+
+  printWord(sortedArray);
 });

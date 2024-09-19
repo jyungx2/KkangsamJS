@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        // 다슬님처럼 따로 변수 선언 후, 함수 안에서 정의해준다. => 나중에 close()함수 쓸 때, window상에 불러오는 것이 아닌, 코드의 가독성과 직관성을 위해 childWindow.close() 이라고 쓸 것이다.
+        // 🚨 이때, let이 아닌, var로 써줘야 undefined 되지 않아 정상 작동 (🌟 test2 - opener 참고)
+       var childWindow
+        function goAddress() {
+            childWindow = window.open('address.html', '_blank', 'left=100,top=100,width=500,height=600')
+        }
+
+      // 🔆 강사님처럼 함수를 부모 Html상에 따로 선언하여 재사용성 및 유지보수성, 가독성 ⬆️
+        function printAddress(address) {
+          let resultNode = document.querySelector('.addressArea')
+          resultNode.innerHTML = address;
+        }
+    </script>
+  </head>
+  <body>
+    <h1>회원가입 페이지</h1>
+    <button onclick="goAddress()">주소입력</button>
+    <div class="addressArea" style="margin: 15px;"></div>
+  </body>
+</html>

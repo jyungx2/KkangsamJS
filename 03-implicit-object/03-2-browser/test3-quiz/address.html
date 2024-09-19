@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+         function displayAddress() {
+           let inputAddress = document.querySelector('.inputAddress').value;
+
+            // 🖍️ 강사님: address == null (= !inputAddress)
+             if (!inputAddress || inputAddress.trim().length == 0) {
+               // ✅ 주소 입력하지 않으면 경고창 표시.
+                alert(`💥 주소를 입력하셔야 합니다.`)
+             } else {
+               // 자식 -> 부모 데이터 이용
+               // ✅ 주소를 입력 후 버튼 클릭하면 인풋 주소가 부모 창에 뜨도록.
+               opener.printAddress(inputAddress);
+
+              //  🔆 나는 함수를 따로 지정하지 않고 함수 안의 코드를 풀어 써줬다.
+              //  opener.document.querySelector('.addressArea').innerHTML = inputAddress
+
+              // 💥 close() 함수를 window상에서 바로 불러오지 않고, 다슬님처럼 childWindow 따로 변수로 정의해줘서 이 변수 상에서 close() 불러오는 게 더 보기/읽기 좋은 코드일듯?
+              // window.close();
+                opener.childWindow.close();
+             }
+         }
+
+
+      // 부모 -> 자식 데이터 이용
+      //  ✅ 만약, 부모 html에서 ✨자식 html상의 변수나 함수를 이용✨해야 한다면, 일단 먼저 다음과 같이, 자식 html에서 부모 html 문서 객체인 'opener'상에 자기 자신(자식 Html)을 지칭하는 this keyword를 이용해 프라퍼티를 추가해줘야 한다.
+      opener.childAddress = this;
+    </script>
+  </head>
+  <body>
+    <h1>주소</h1>
+    <input class="inputAddress" type="text" placeholder="주소를 입력하세요." />
+    <button onclick="displayAddress()">입력</button>
+  </body>
+</html>

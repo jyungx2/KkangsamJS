@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function getMainData() {
+        // window.open()에 의해 뜬 Html의 내장 객체인 opener(부모 창) 상의 데이터에 접근하여 컨솔로그에 띄울 것임!
+          console.log('child log', opener.mainData);
+          // let으로 선언한 변수 사용할 때는 undefined로 뜸.
+          // 🚨❓난 var로 하든 let으로 하든, 아예 안뜸
+          opener.mainFun(); // mainFun call... 부모창에 출력!
+      }
+
+       // 부모 창에서 자식 창에게 접근하려면 먼저 자식창에서 자신을 부모창에서 이용하게 등록해줘야 한다. (this - 자기 자신 지칭하는 예약어)
+       opener.child = this; // child라는 임의의 네임으로 자기자신(자식창)을 이름 붙여준 것!
+
+
+       // ✅ 아래 변수와 함수는 부모 창에서 접근할 데이터.
+      var childData = 20
+       // 🚨❓ childFun call..이 출력되지 않는다..
+      function childFun() {
+        console.log('childFun call..');
+      }
+
+      function myClose() {
+       opener.location.href = 'http://www.naver.com'
+       window.close();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>I'm a child page!</h1>
+    <button onclick="getMainData()">get main data</button>
+    <button onclick="myClose()">close</button>
+  </body>
+</html>

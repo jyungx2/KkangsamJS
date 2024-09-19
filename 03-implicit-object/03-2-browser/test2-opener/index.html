@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // ✅ child 창의 html(js)에서 접근할 변수와 함수..
+      // 🚨 자식 창에서 접근하려면 let이 아닌, Var로 선언해야 한다, let -> undefined
+        var mainData = 10;
+        function mainFun() {
+          console.log(`mainFun call...`);
+        }
+
+        function goChild() {
+           window.open('child.html', '_blank', 'left=100,top=100,width=300,height=400')
+        }
+
+        function getChildData() {
+            // 자식창의 변수와 함수에 접근.
+            // 자식 창에서 지정한 이름으로 접근.(opener.child = this)
+
+            // 자식창에 선언한 변수(childData) 이용
+            console.log(child.childData);
+
+            // 자식창에 선언한 함수(childFun) 이용
+            child.childFun(); // 🚨❓ childFun call..이 출력되지 않는다..
+        }
+    </script>
+  </head>
+  <body>
+    <h1>I am a Parent Page!!</h1>
+    <button onclick="goChild()">go child</button>
+    <button onclick="getChildData()">get child data</button>
+  </body>
+</html>
