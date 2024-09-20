@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>one</div>
+    <div>two</div>
+    <div id="a1">three</div>
+    <div class="b1">four</div>
+    <div id="a2">
+      <div>five</div>
+      <div class="b1">six</div>
+    </div>
+    <div>
+      <input name="address" />
+      <p id="result"></p>
+    </div>
+
+    <p><button onclick="idTest()">id test</button></p>
+    <script>
+      function idTest()  {
+        // ID로 노드 획득..
+          let selectNode = document.getElementById('a1')
+          selectNode.style.backgroundColor = 'red'
+      }
+    </script>
+
+    <p><button onclick="tagNameTest()">tag name test</button></p>
+    <script>
+      function tagNameTest() {
+          // tag name으로 노드 획득.. getElementsByTagName - 걸리는 노드 모두 반환.(복수!)
+          // HTML collection - ✨선택된 여러개를 지칭, 얘 자체가 노드는 아니라서 오류가 난 것✨
+          let selectNode = document.getElementsByTagName('div')
+        // selectNode.style.backgroundColor = 'pink'
+          // => 🚨 undefined 출력
+
+          for (let i=0; i<selectNode.length; i++) {
+            selectNode[i].style.backgroundColor = 'pink'
+          }
+      }
+    </script>
+
+    <p><button onclick="classTest()">class test</button></p>
+    <script>
+      function classTest() {
+      // classs name으로 노드 획득.. getElementsByTagName처럼 걸리는 노드 모두 반환하므로
+      // 루프 사용해야 한다!
+      let selectNode = document.getElementsByClassName('b1')
+        // selectNode.style.backgroundColor = 'blue'  // Undefined
+
+        for (let i=0; i<selectNode.length; i++) {
+            selectNode[i].style.backgroundColor = 'blue'
+        }
+      }
+    </script>
+
+    <!-- 📌 getElementsByName() -->
+    <p><button onclick="nameTest()">name test</button></p>
+    <script>
+      function nameTest() {
+        // 주소 입력값을 얻자 (name으로 노드 획득)
+        // 🖍️name속성은 유일성이 확보된 아이는 아니라서 위의 예시처럼
+        // 여러개가 합쳐진 Collection 형태로 나올 수 있다.
+        let addressNode = document.getElementsByName('address')
+        // result에 출력.. (id로 노드 획득)
+        let resultNode = document.getElementById('result')
+
+        // tagName 프라퍼티 이용해 태그 네임 출력가능! (input)
+        resultNode.innerHTML = `${addressNode[0].tagName} ${addressNode[0].value}`
+      }
+    </script>
+
+    <!-- 📌 querySelector() -->
+    <p><button onclick="selectorTest()">query select test</button></p>
+    <script>
+      function selectorTest() {
+        // 💥 id가 'a2'인 요소 하위에 있는 div 노드들을 선택해라.
+          let selectNode = document.querySelectorAll('#a2 div')
+
+          for (let i=0; i<selectNode.length; i++) {
+            selectNode[i].style.backgroundColor = 'pink'
+          }
+      }
+    </script>
+  </body>
+</html>
