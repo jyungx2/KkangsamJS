@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body, p {
+       margin: unset;
+       font-family: 'arial';
+       font-size: 1.6rem;
+      }
+
+      :root {
+        font-size: 62.5%;
+      }
+
+      .message {
+        display: flex;
+        background-color: rgb(80, 80, 80);
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 8px;
+        color: white;
+      }
+
+      .message-main {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .message-header {
+        display: flex;
+
+        align-items: center;
+
+        /* justify-content: space-between; */
+      }
+
+      .message-header p {
+        margin-right: 10px;
+      }
+
+      .username {
+
+        color: orange;
+      }
+
+      .profile-cover {
+        width: 40px;
+        height: 40px;
+      }
+
+      .date,
+      .time {
+        color: rgb(167, 167, 167);
+        font-size: 1.2rem;
+      }
+
+      .btn--emoji {
+        width: 40px;
+      }
+
+      .emoji-count {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message">
+      <img
+        src="discord-profile.png"
+        class="profile-cover"
+        alt="profile-picture"
+      />
+      <div class="message-main">
+        <div class="message-header">
+          <p class="username">12. 이지영</p>
+          <p class="date">2024.09.04</p>
+          <p class="time">오후 12:33</p>
+        </div>
+        <p class="text">디버깅 용도로 많이 사용합니다.</p>
+        <button class="btn--emoji">
+          <span class="emoji">👍</span> <span class="emoji-count">9</span>
+        </button>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
