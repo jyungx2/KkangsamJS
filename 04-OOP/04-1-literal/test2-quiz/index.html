@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      body, p {
+      body, p, span {
        margin: unset;
        font-family: 'arial';
        font-size: 1.6rem;
@@ -17,7 +17,7 @@
 
       .message {
         display: flex;
-        background-color: rgb(80, 80, 80);
+        background-color: rgb(60, 60, 60);
         max-width: 500px;
         margin: 0 auto;
         padding: 8px;
@@ -32,7 +32,6 @@
 
       .message-header {
         display: flex;
-
         align-items: center;
 
         /* justify-content: space-between; */
@@ -43,7 +42,6 @@
       }
 
       .username {
-
         color: orange;
       }
 
@@ -59,11 +57,20 @@
       }
 
       .btn--emoji {
-        width: 40px;
+       display: flex;
+       width: fit-content;
+       align-items: center;
+       gap: 6px;
+       height: 30px;
+       line-height: 30px;
+       border: 2px solid rgb(20, 20, 207);
+       border-radius: 8px;
+       background-color: rgb(60, 60, 60);
       }
 
       .emoji-count {
         font-weight: 600;
+        color: white;
       }
     </style>
   </head>
