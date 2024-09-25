@@ -3,70 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Jiyoung</title>
     <link rel="stylesheet" href="chat.css" />
   </head>
   <body>
     <section class="msger">
       <main class="msger-chat" id="chat-main">
-        <!-- 다음 디브요소는 JS에 의해 동적으로 추가되어야 하는 요소 -->
-        <!-- <div id="msgId-1" class="msg left-msg">
-          <img src="images/kim.jpg" class="msg-img" />
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">김길동</div>
-              <div class="msg-info-time">2024. 9. 10. 오후 7:10:00</div>
-              <div class="dropdown">
-                <button class="msg-info-menu dropbtn">
-                  <img src="images/menu.jpg" />
-                </button>
-                <div class="dropdown-content">
-                  <a href="#" onclick="emojiClick('1','thumbup')">좋아요</a
-                  ><a href="#" onclick="emojiClick('1','ok')">넵</a>
-                </div>
-              </div>
-            </div>
-            <div class="msg-text">안녕하세요</div>
-            <div class="emojis">
-              <div class="dropdown">
-                <img class="emoji dropbtn" src="images/thumbup.jpg" />
-                <div class="dropdown-content"><span>lee,hong</span></div>
-              </div>
-              <span class="emoji-count">2</span>
-              <div class="dropdown">
-                <img class="emoji dropbtn" src="images/ok.jpg" />
-                <div class="dropdown-content"><span>park</span></div>
-              </div>
-              <span class="emoji-count">1</span>
-            </div>
-          </div>
-        </div> -->
-        <!-- <div id="msgId-2" class="msg left-msg">
-          <img src="images/lee.jpg" class="msg-img" />
-          <div class="msg-bubble">
-            <div class="msg-info">
-              <div class="msg-info-name">이길동</div>
-              <div class="msg-info-time">2024. 9. 10. 오후 7:10:10</div>
-              <div class="dropdown">
-                <button class="msg-info-menu dropbtn">
-                  <img src="images/menu.jpg" />
-                </button>
-                <div class="dropdown-content">
-                  <a href="#" onclick="emojiClick('2','thumbup')">좋아요</a
-                  ><a href="#" onclick="emojiClick('2','ok')">넵</a>
-                </div>
-              </div>
-            </div>
-            <div class="msg-text">hello world</div>
-            <div class="emojis">
-              <div class="dropdown">
-                <img class="emoji dropbtn" src="images/thumbup.jpg" />
-                <div class="dropdown-content"><span>kim</span></div>
-              </div>
-              <span class="emoji-count">1</span>
-            </div>
-          </div>
-        </div> -->
+        <!-- JS에 의해 동적으로 추가되어야 하는 요소 -->
       </main>
 
       <form class="msger-inputarea">
@@ -88,7 +31,14 @@
           placeholder="Enter your message..."
           id="msgInput"
         />
-        <button class="msger-send-btn" onclick="send(event)">Send</button>
+        <!-- html 태그 내에서 onclick등으로 이벤트함수를 호출할 때.. 필요에 의해서 이벤트 객체를 전달해야 한다. 이때는 event로.. -->
+        <!-- html문서에서는 event 객체를 매개변수로 전달하려면, 그냥 e로 쓰면 event라는 객체가 지칭이 안된다!! -->
+        <!-- event라는 이름으로 객체가 정의돼있기 때문에.. -->
+        <!-- 이벤트는 우리가 만든 객체는 아니고, 브라우저 내장객체로서, 이벤트가 발생할 때 자동으로 생성되는 객체이다. -->
+        <!-- 실제 만들어지는 객체는 Event라는 객체가 만들어지지만, 함수내에선 E라는 변수로 쓰는건 내마음이기 때문에 상관없다!. -->
+        <button class="msger-send-btn" onclick="sendMessage(event)">
+          Send
+        </button>
       </form>
     </section>
     <script src="main.js"></script>
