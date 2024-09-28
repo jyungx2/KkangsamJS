@@ -7,7 +7,8 @@ function myFun(arg1, arg2) {
 
 // 일반함수로 준비..
 // 에러 발생하지 않았다.. myFun 내에 Prototype 변수를 선언한 적이 없는데...
-// => 생성자함수가 아니더라도, prototype 객체는 모든 함수내에 준비되기 때문에
+
+// => 생성자 함수가 아니더라도, prototype 객체는 모든 함수 내에 준비되기 때문에
 // 만들어진 Prototype 내에는 자동으로 constructor() 함수를 가지고 나머지 멤버는 없는 빈 상태의 객체가 자동 준비..
 console.log(myFun.prototype);
 
@@ -44,7 +45,7 @@ console.dir(user1);
 console.dir(user2);
 console.log(User.prototype.constructor);
 
-// test3) prototype의 변수에 객체로 값을 대입해서 바꾸면..
+// test3) prototype의 변수를 객체로 값을 대입해서 바꾸면..
 user1.age = 40;
 user1.address = "incheon";
 // 💥Prototype의 데이터가 변경되지 않고, 그 객체 내에 동일이름의 변수가 선언되어 그 객체 내에 유지되는 데이터가 된다..
