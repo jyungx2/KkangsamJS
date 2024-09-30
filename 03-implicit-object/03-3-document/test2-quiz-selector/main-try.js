@@ -1,7 +1,7 @@
 "use strict";
 
 const formNode = document.querySelector(".form-register");
-const resultNode = document.querySelector(".resultRegister");
+const resultNode = document.querySelector(".result-register");
 
 const displayResult = function (message) {
   resultNode.innerHTML = message;

@@ -21,7 +21,7 @@ let newAText = document.createTextNode("link");
 let newDivText = document.createTextNode("hello");
 
 newA.setAttributeNode(newAHref);
-// 🚨 SetAttribute가 아닌, AttributeNode로 추가해줘야 에러 안뜬다!!
+// 🚨 setAttribute가 아닌, setAttributeNode로 추가해줘야 에러 안뜬다!!
 newA.appendChild(newAText);
 
 newDiv.appendChild(newA);

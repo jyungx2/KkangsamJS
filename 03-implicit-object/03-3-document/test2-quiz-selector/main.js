@@ -12,7 +12,7 @@ formNode.addEventListener("submit", (e) => {
 });
 
 // 결과 출력 노드
-const resultRegister = document.querySelector(".resultRegister");
+const resultRegister = document.querySelector(".result-register");
 
 // 이름 노드
 const inputUsername = document.querySelector("#username");
