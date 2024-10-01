@@ -1,47 +1,106 @@
 "use strict";
 
-function Member(id, nickname, photo) {
-  this.id = id;
-  this.nickname = nickname;
-  this.photo = photo;
+// function Member(id, nickname, photo) {
+//   this.id = id;
+//   this.nickname = nickname;
+//   this.photo = photo;
+// }
+
+// 1️⃣ constructor function -> class
+class Member {
+  constructor(id, nickname, photo) {
+    this.id = id;
+    this.nickname = nickname;
+    this.photo = photo;
+  }
 }
 
-function Emoji(emojiId) {
-  this.emojiId = emojiId;
-  this.count = 0;
-  this.members = [];
-  this.add = function (memberId) {
+// function Emoji(emojiId) {
+//   this.emojiId = emojiId;
+//   this.count = 0;
+//   this.members = [];
+//   //   this.add = function (memberId) {
+//   //     this.count++;
+//   //     this.members.push(memberId);
+//   //   };
+//   // 💥함수는 prototype으로 저장해야 메모리효율성 높일 수 있다.
+//   Emoji.prototype.add = function (memberId) {
+//     this.count++;
+//     this.members.push(memberId);
+//   };
+// }
+
+class Emoji {
+  constructor(emojiId) {
+    this.emojiId = emojiId;
+    this.count = 0;
+    this.members = [];
+  }
+
+  // 클래스의 static 멤버와 생성자함수의 prototype은 다르다..💫
+  // 객체 생성의 메모리에 매번 할당되지 않는다는 공통점만 있지.. 이용 및 목적이 다르다
+  // prototype은 객체로 이용.. / static은 객체로 이용 불가. 클래스명으로 이용.
+
+  add(memberId) {
     this.count++;
     this.members.push(memberId);
-  };
+  }
 }
 
-function Message(msg, member) {
-  this.msgId = ++msgId; // 메시지마다 식별하기 위해..
-  this.msg = msg;
-  this.member = member; // 여기다가 new Member() 생성자함수 쓰면 안된다!!
-  // member 파라미터가 이미 객체형태로 들어올 것이기 때문에 그냥 member로..
+// function Message(msg, member) {
+//   this.msgId = ++msgId;
+//   this.msg = msg;
+//   this.member = member;
 
-  this.date = new Date().toLocaleString();
-  this.emojis = [];
+//   this.date = new Date().toLocaleString();
+//   this.emojis = [];
 
-  this.addEmoji = function (emojiId, memberId) {
+//   //   this.addEmoji = function (emojiId, memberId) {
+//   //     if (this.emojis.every((item) => item.emojiId !== emojiId)) {
+//   //       let emoji = new Emoji(emojiId);
+//   //       emoji.add(memberId);
+//   //       this.emojis.push(emoji);
+//   //     } else {
+//   //       let index = this.emojis.findIndex((item) => item.emojiId === emojiId);
+//   //       this.emojis[index].add(memberId);
+//   //     }
+//   //   };
+
+//   Message.prototype.addEmoji = function (emojiId, memberId) {
+//     if (this.emojis.every((item) => item.emojiId !== emojiId)) {
+//       let emoji = new Emoji(emojiId);
+//       emoji.add(memberId);
+//       this.emojis.push(emoji);
+//     } else {
+//       let index = this.emojis.findIndex((item) => item.emojiId === emojiId);
+//       this.emojis[index].add(memberId);
+//     }
+//   };
+// }
+
+class Message {
+  constructor(msg, member) {
+    this.msgId = ++msgId;
+    this.msg = msg;
+    this.member = member;
+    this.date = new Date().toLocaleString();
+    this.emojis = [];
+  }
+
+  addEmoji(emojiId, memberId) {
     if (this.emojis.every((item) => item.emojiId !== emojiId)) {
-      let emoji = new Emoji(emojiId); // 이모지 객체를 새로 만들고, 이모지 객체 안에 있는 함수를 실행시켜야 한다. (밑의 코드)
-      emoji.add(memberId); // ⭐️ 객체를 불러오고나서 그 객체안에있는 Add함수를 실행시켜야 카운트가 올라가고 멤버스에 멤버가 추가됨!!
-      // 그냥 푸쉬만 눌러주면 빈 객체로만 업데이트 되겠지..
+      let emoji = new Emoji(emojiId);
+      emoji.add(memberId);
       this.emojis.push(emoji);
     } else {
       let index = this.emojis.findIndex((item) => item.emojiId === emojiId);
       this.emojis[index].add(memberId);
     }
-  };
+  }
 }
 
 // 전체 채팅 메시지가 저장되는 배열, Message 객체 여러개가 저장
 let messages = [];
-// 📌 채팅 메시지를 식별해야 이모지를 어디다 추가할건지가 결정될 수 있어서..
-// 1씩 증가시켜서.. 신규 발생 채팅 메시지 식별자 id(msgId)로 사용하기 위해서..
 let msgId = 0;
 
 // 필요한 돔노드 객체 획득..
@@ -63,12 +122,7 @@ const printMessage = function (message) {
   //  📌 Link 1
   let link1 = document.createElement("a");
   link1.setAttribute("href", "#");
-  // >> 링크가 필요하긴 한데, 특정 Url로 갈 필요가 없는 경우 #을 준다.
-
   link1.setAttribute("onclick", `clickEmoji('${message.msgId}', 'thumbup')`);
-  // >> 🌟어느 이모지냐는 'thumup' : emojiId
-  // >> 🌟이 이모지가 어느 메시지에 들어가냐 식별할 수 있게 도와주는 id : message.msgId
-
   let link1Text = document.createTextNode("좋아요");
   link1.appendChild(link1Text);
 
@@ -94,14 +148,13 @@ const printMessage = function (message) {
   let name = document.createElement("div");
   name.setAttribute("class", "msg-info-name");
   name.appendChild(document.createTextNode(message.member.nickname));
-  // 객체(message)안에 객체(member)가 있는 것. Member안에 정의된 nickname 겟!
 
   // 📌 main data - 시간날짜
   let date = document.createElement("div");
   date.setAttribute("class", "msg-info-time");
   date.appendChild(document.createTextNode(message.date));
 
-  // 👉 이름과 시간날짜를 위에서 만든 dropdown과 함께 msgInfo 디브로 묶는다.
+  // 👉 이름과 시간날짜를 msgInfo 디브로 묶는다.
   let msgInfo = document.createElement("div");
   msgInfo.setAttribute("class", "msg-info");
   msgInfo.appendChild(name);
@@ -127,8 +180,6 @@ const printMessage = function (message) {
   photo.setAttribute("class", "msg-img");
 
   // 📌 메시지 루트 태그 준비 (프사(msg-img) + msg-bubble)
-  // 화면에 메시지는 여러개 추가된다.. 각 div태그를 id로 식별해야 나중에 메시지에
-  // 특정 이모지 추가시 어느 div에 출력해야 하는지 식별할 수 있다.
   let mainNode = document.createElement("div");
   mainNode.setAttribute("id", `msgId-${message.msgId}`);
   mainNode.setAttribute("class", "msg left-msg");
@@ -144,35 +195,29 @@ const printMessage = function (message) {
 // send 버튼 눌렀을 때, 동적으로 요소를 만들어 chat-main 바디부분에 추가한다.
 const sendMessage = function (e) {
   e.preventDefault();
-  // 유저 입력 데이터 추출...
+
   let id = idInput.value;
   let nickname = nicknameInput.value;
   let msg = msgInput.value;
 
-  // 유효성 검증..
   if (
     id.trim().length === 0 ||
     nickname.trim().length === 0 ||
     msg.trim().length === 0
   ) {
-    alert("아이디, 닉네임과 메시지를 모두 입력해야 합니다.");
+    alert("아이디, 닉네임과 메시지를 입력해야 합니다.");
     return;
   } else {
-    // 유저 입력 데이터 화면에서 삭제...
     idInput.value = "";
     nicknameInput.value = "";
     msgInput.value = "";
 
     // 📌 메시지 입력 유저를 표현하는 객체 생성
-    // * photo: 프사는 유저 id와 동일한 파일명을 가진다고 가정.
     let member = new Member(id, nickname, `images/${id}.jpg`);
 
     // 📌 메시지 객체 생성
     let message = new Message(msg, member);
     messages.push(message);
-
-    // 화면에 동적 노드 만들어서 출력.. => 1️⃣ 코드가 길고, 단일업무이므로 따로 함수로 빼자.
-    // 메시지를 화면 출력 => 여기다 작성해도 되지만, 화면출력 관련 함수는 너무 길어질 가능성이 크므로, 함수로 따로 뺀다.
     printMessage(message);
   }
 };
@@ -193,6 +238,7 @@ const printEmoji = function (message) {
       messageBubble.removeChild(emojiNode);
     }
 
+    //
     let emojisNode = document.createElement("div");
     emojisNode.setAttribute("class", "emojis");
 
@@ -206,7 +252,7 @@ const printEmoji = function (message) {
       // 1) 일단 span 준비
       let span = document.createElement("span");
       let nicknameTxt = emoji.members.join(",");
-      span.appendChild(document.createTextNode(nicknameTxt)); //💥
+      span.appendChild(document.createTextNode(nicknameTxt));
 
       // 2) span을 감싸는 div 준비
       let dropdownContent = document.createElement("div");
@@ -237,21 +283,13 @@ const printEmoji = function (message) {
 
 // 3️⃣ 이모지 추가 함수 선언
 const clickEmoji = function (msgId, emojiId) {
-  // 동적으로 이모지를 메시지에 출력..
-  // 서버와 연동된다면 이모지 출력 유저의 ID는 고정되지만..
-  // 지금은 로컬 테스트임으로 이모지 추가 유저 Id를 테스트를 위해서 Prompt로 받아들인다.
-
   let memberId = prompt("멤버 id를 입력해주세요.");
   if (memberId === null) {
     alert("입력하지 않았습니다.");
   } else {
-    // 화면에 메시지는 많다.. 모든 메시지의 이모지 추가 클릭하면 이 함수가 호출된다.
-    // 결국 어느 메시지에서 이모지를 클릭한 것인지가 식별되어야 하기 때문에
-    // Html을 준비할 때 매개변수로 msgId를 받아들였던 것.
     let index = messages.findIndex((item) => item.msgId === msgId);
-    messages[index].addEmoji(emojiId, memberId); // memberId -> 객체로 만들어서 해도 OK
+    messages[index].addEmoji(emojiId, memberId);
 
-    // 해당 메시지에 이모지 추가해 출력
     printEmoji(messages[index]);
   }
 };

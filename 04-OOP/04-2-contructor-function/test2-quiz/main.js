@@ -21,6 +21,7 @@ function Member(id, nickname, photo) {
 //     this.members.push(id);
 //     },
 //   }
+
 function Emoji(emojiId) {
   this.emojiId = emojiId;
   this.count = 0;

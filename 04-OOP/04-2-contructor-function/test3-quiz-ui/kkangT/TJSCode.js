@@ -166,6 +166,8 @@ function printEmoji(message) {
       `#msgId-${message.msgId} .msg-bubble`
     );
     //이모지가 기존에 추가된 것이 있을 수도 있고 없을 수도 있고
+    // querySelector()는 Document뿐만 아니라, 요소 노드 자체에서도 쓸 수 있다!
+    // querySelector() also works on elements, not only on the document.
     let emojiNode = messageBubble.querySelector(".emojis");
     if (emojiNode) {
       //기존에 이모지 추가된 것이 있는 상황..

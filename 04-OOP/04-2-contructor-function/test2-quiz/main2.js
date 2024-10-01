@@ -19,6 +19,7 @@ function Message(msg, member) {
   this.msg = msg;
   this.memeber = member;
 
+  this.date = new Date().toLocaleString();
   this.emojis = [];
 
   this.addEmoji = function (emojiId, memberId) {

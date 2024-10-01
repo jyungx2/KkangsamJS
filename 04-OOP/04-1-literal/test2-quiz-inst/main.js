@@ -20,15 +20,21 @@
 이모지 추가 함수
 */
 
+//  ✅ 객체 생성
+
 let message = {
   msg: "디버깅 용도로 많이 사용합니다.",
   date: "2024.09.04 오전 10:32",
+
+  //  ✅ 객체 생성
   member: {
     id: "leeJY",
     nickname: "12. 이지영",
     photo: "leeJY.png",
   },
+
   emojis: [
+    //  ✅ 객체 생성 (이 객체들을 감싸는 emojis 어레이([])는 냅둔다. => 나중에 addEmoji 함수 안에서 Push method로 이 배열에 넣어줄 거라 당연히 필요하다!!)
     {
       id: "thumsup",
       count: 1,
