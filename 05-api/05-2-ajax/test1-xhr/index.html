@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 데이터는 프론트엔드에서 발생. -->
+    <!-- 이 데이터에 대한 업무는 send버튼을 통해 서버로 요청하기 때문에 백엔드에서 진행된다고 볼 수 있음. -->
+    num : <input type="text" id="num" />
+    <button onclick="sum()">send</button>
+    <div>
+      <!-- 백엔드에서 업무 처리 후 데이터 발행  -->
+      <h3>Server Data : <span id="result"></span></h3>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
