@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jiyoung</title>
+    <link rel="stylesheet" href="chat.css" />
+  </head>
+  <body>
+    <section class="msger">
+      <main class="msger-chat" id="nicknameForm">
+        <!-- JS에 의해 동적으로 추가되어야 하는 요소 -->
+      </main>
+
+      <form class="msger-inputarea">
+        <input
+          type="text"
+          class="msger-input-nickname"
+          placeholder="id"
+          id="idInput"
+        />
+        <input
+          type="text"
+          class="msger-input-nickname"
+          placeholder="nickname"
+          id="nicknameInput"
+        />
+        <!-- <input
+          type="text"
+          class="msger-input-msg"
+          placeholder="Enter your message..."
+          id="msgInput"
+        /> -->
+        <!-- button: send -> connect로 변경 -->
+        <button class="msger-send-btn" onclick="connect(event)">Connect</button>
+        <!-- <button class="msger-send-btn" onclick="sendMessage(event)">
+            Send
+          </button> -->
+      </form>
+
+      <!-- 두번째 form 요소 추가 -->
+      <!-- id와 style을 추가 ... 일단 보이지 않도록 -->
+      <form class="msger-inputarea" id="msgForm" style="display: none;">
+        <!-- <input
+          type="text"
+          class="msger-input-nickname"
+          placeholder="id"
+          id="idInput"
+        />
+        <input
+          type="text"
+          class="msger-input-nickname"
+          placeholder="nickname"
+          id="nicknameInput"
+        /> -->
+        <input
+          type="text"
+          class="msger-input-msg"
+          placeholder="Enter your message..."
+          id="msgInput"
+        />
+        <button class="msger-send-btn" onclick="sendMessage(event)">
+          Send
+        </button>
+      </form>
+    </section>
+    <script src="main.js"></script>
+  </body>
+</html>

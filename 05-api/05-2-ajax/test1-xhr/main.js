@@ -21,7 +21,10 @@ function sum() {
   // ✅ third parameter: 비동기 or 동기
   xhr.open("get", `http://localhost:3000/sum/${numNode.value}`, true);
 
-  // 3. 서버로부터 결과를 받기 위해 콜백함수 등록
+  // 3. 서버에 업무 요청
+  xhr.send();
+
+  // 4. 서버로부터 결과를 받기 위해 콜백함수 등록
   xhr.onload = function () {
     if (xhr.status === 200) {
       // http response 상태 코드 값이 200인 경우에만 서버 실행 성공
@@ -34,7 +37,4 @@ function sum() {
       // 서버에서 result에 결과 데이터를 담아서 전달함
     }
   };
-
-  // 4. 서버에 업무 요청
-  xhr.send();
 }

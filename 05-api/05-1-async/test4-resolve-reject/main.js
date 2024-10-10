@@ -15,7 +15,7 @@ try {
 } catch (e) {
   // try에서 에러가 발생될 때 자동 호출.. 에러 대응 코드
   // 혹시 try에서 발생하면 실행된다. 무조건 실행❌
-  console.log("2");
+  console.log(`2 ${e.message}`);
 }
 console.log("3");
 

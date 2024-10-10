@@ -1,0 +1,4 @@
+> 1. npm install : Library Download
+
+> 2. node main.js : server execution
+>    => socket server 구동 : 3000 (터미널에 출력)

@@ -1,0 +1,18 @@
+{
+  "name": "test2-tsconfig",
+  "version": "1.0.0",
+  "description": "// npm: node.js의 명령어이자, package(라이브러리) 관리 툴.. // => package 설치, 삭제, 업데이트하기 위한 목적으로 사용",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "jquery": "^3.7.1"
+  }
+}
